@@ -1,7 +1,7 @@
 # Testing on Semantic Segmentation
 
 Pretrained models can be downloaded [here](models.md). 
-For convenience, we offer pre-processed segmentation inputs from other segmentation models [here](dataset.md).
+For convenience, we offer pre-processed segmentation inputs from other segmentation models [here](dataset.md). Pre-computed results from our method can also be found [here](dataset.md)
 
 ## Test set Structure
 
@@ -23,7 +23,7 @@ To refine on high-resolution segmentations using both the Global and Local step 
 # From CascadePSP/
 python eval.py \
     --dataset testset_directory \
-    --model model.model \
+    --model model_name \
     --output output_directory
 ```
 
@@ -33,7 +33,7 @@ To refine on low-resolution segmentations, we can skip the Local step (though us
 # From CascadePSP/
 python eval.py \
     --dataset testset_directory \
-    --model model.model \
+    --model model_name \
     --output output_directory \
     --global_only
 ```
@@ -43,5 +43,5 @@ You can obtain the accurate metrics (i.e. IoU and mBA) by running a separate scr
 ``` bash
 # From CascadePSP/
 python eval_post.py \
-    --dir results_directory
+    --dir output_directory
 ```

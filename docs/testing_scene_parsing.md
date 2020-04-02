@@ -1,7 +1,7 @@
 # Testing on Scene Parsing
 
 Pretrained models can be downloaded [here](models.md). 
-For convenience, we offer pre-processed scene parsing inputs from other segmentation models [here](dataset.md).
+For convenience, we offer pre-processed scene parsing inputs from other segmentation models [here](dataset.md). Pre-computed results from our method can also be found [here](dataset.md)
 
 ## Test set Structure
 Evaluation on scene parsing dataset is more complicated. Read this [document](testing_segmentation.md) about testing on segmentation first for starters. 
@@ -22,7 +22,7 @@ To run step 3, append an extra flag `--ade` to `eval.py`.
 # From CascadePSP/
 python eval.py \
     --dataset testset_directory \
-    --model model.model \
+    --model model_name \
     --output output_directory \
     --ade
 ```
@@ -33,6 +33,7 @@ And to run step 4,
 python eval_post_ade.py \
     --mask_dir [Output directory in step3] \
     --seg_dir [Directory with the original initial segmentations] \
+    --gt_dir [Directory with the ground truth segmentations] \
     --split_dir [Directory with the broken-down initial segmentations] \
     --output output_directory
 ```

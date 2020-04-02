@@ -11,3 +11,4 @@ We recommend using the anaconda distribution which should contain most of the re
 pip install progressbar2
 conda install cv2
 ```
+You would also need `tensorboard` for logging.
