@@ -43,6 +43,12 @@ Downloads:
 - [Pretrained Models](docs/models.md)
 - [BIG Dataset and Relabeled PASCAL VOC 2012](docs/dataset.md)
 
+## More Results
+### Refining the masks of Human 3.6M
+| Image | Original | Refined | 
+|:-:|:-:|:-:|
+| ![Image](docs/images/H36M/im.jpg) | ![OriginalMask](docs/images/H36M/original_mask.jpg) ![OriginalFG](docs/images/H36M/original_fg.jpg) | ![RefinedMask](docs/images/H36M/refined_mask.jpg) ![RefinedFG](docs/images/H36M/refined_fg.jpg) |
+
 ## Credit
 
 PSPNet implementation: https://github.com/Lextal/pspnet-pytorch
