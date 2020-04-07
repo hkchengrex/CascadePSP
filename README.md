@@ -45,9 +45,9 @@ Downloads:
 
 ## More Results
 ### Refining the masks of Human 3.6M
-| Image | Original | Refined | 
-|:-:|:-:|:-:|
-| ![Image](docs/images/H36M/im.jpg) | ![OriginalMask](docs/images/H36M/original_mask.jpg) ![OriginalFG](docs/images/H36M/original_fg.jpg) | ![RefinedMask](docs/images/H36M/refined_mask.jpg) ![RefinedFG](docs/images/H36M/refined_fg.jpg) |
+| Image | Original Mask | Original FG | Refined Mask | Refined FG |
+|:-:|:-:|:-:|:-:|:-:|
+| ![Image](docs/images/H36M/im.jpg) | ![OriginalMask](docs/images/H36M/original_mask.jpg) | ![OriginalFG](docs/images/H36M/original_fg.jpg) | ![RefinedMask](docs/images/H36M/refined_mask.jpg) | ![RefinedFG](docs/images/H36M/refined_fg.jpg) |
 
 ## Credit
 
