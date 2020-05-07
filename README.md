@@ -1,8 +1,8 @@
 # CascadePSP: Toward Class-Agnostic and Very High-Resolution Segmentation via Global and Local Refinement
 
-Ho Kei Cheng, Jihoon Chung, Yu-Wing Tai, Chi-Keung Tang
+[Ho Kei Cheng*](https://hkchengrex.github.io/), Jihoon Chung*, Yu-Wing Tai, Chi-Keung Tang
 
-[[Paper]](http://hkchengad.student.ust.hk/CascadePSP/CascadePSP.pdf)
+[[arXiv]](https://arxiv.org/abs/2005.02551) [[PDF]](http://hkchengad.student.ust.hk/CascadePSP/CascadePSP.pdf)
 
 [[Supplementary Information (Comparisons with DenseCRF included!)]](http://hkchengad.student.ust.hk/CascadePSP/CascadePSP-supp-info.pdf)
 
