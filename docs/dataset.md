@@ -6,14 +6,16 @@ Here we provide our annotated dataset for evaluation, as well as segmentation re
 BIG is a high-resolution segmentation dataset that has been hand-annotated by us. Images are collected from Flickr. Please do not use for commercial purposes.
 BIG contains 50 validation objects, and 100 test objects with resolution ranges from 2048\*1600 to 5000\*3600. 
 
+- [Google Drive](https://drive.google.com/open?id=1cLQvy1giJTSrHV4FGzXgadBgI0zNtIxN)
 - [OneDrive](https://hkustconnect-my.sharepoint.com/:u:/g/personal/jchungaa_connect_ust_hk/EUHS22NrOSZEi5-FdhJM6zkB8wn3PUaKbUMLtWMHc0BbOg?e=CVEvSE)
 
 ## Relabeled PASCAL VOC 2012
 We have relabeled 500 images from PASCAL VOC 2012 to have more accurate boundaries. 
 Below shows an example of our relabeled segmentation.
 
-![](images/relabeled_pascal.png)
+![relabeled_pascal](images/relabeled_pascal.png)
 
+- [Google Drive](https://drive.google.com/open?id=1vtkR05TTSQYu6XPrNr88sh3m7UxDazn2)
 - [OneDrive](https://hkustconnect-my.sharepoint.com/:u:/g/personal/jchungaa_connect_ust_hk/EbtbHa40zNJDpNlD3UbDadQB4eG_dNfFI7YDit3OYOXAkw?e=Gmuaym)
 
 ## Segmentation Results
