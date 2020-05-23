@@ -22,7 +22,7 @@ To refine on high-resolution segmentations using both the Global and Local step 
 ``` bash
 # From CascadePSP/
 python eval.py \
-    --dataset testset_directory \
+    --dir testset_directory \
     --model model_name \
     --output output_directory
 ```
@@ -32,7 +32,7 @@ To refine on low-resolution segmentations, we can skip the Local step (though us
 ``` bash
 # From CascadePSP/
 python eval.py \
-    --dataset testset_directory \
+    --dir testset_directory \
     --model model_name \
     --output output_directory \
     --global_only

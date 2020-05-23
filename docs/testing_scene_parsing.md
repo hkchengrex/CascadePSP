@@ -21,7 +21,7 @@ To run step 3, append an extra flag `--ade` to `eval.py`.
 ``` bash
 # From CascadePSP/
 python eval.py \
-    --dataset testset_directory \
+    --dir testset_directory \
     --model model_name \
     --output output_directory \
     --ade
