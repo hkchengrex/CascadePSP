@@ -16,10 +16,6 @@ This repository contains our PyTorch implementation with both training and testi
 Here are some refinement results on high-resolution images.
 ![teaser](docs/images/teaser.jpg)
 
-## Quick Start
-
-Check out [this folder](https://github.com/hkchengrex/CascadePSP/tree/master/segmentation-refinement). We have built a pip package that can refine an input image with two lines of code.
-
 ## Network Overview
 
 ### Global Step & Local Step
