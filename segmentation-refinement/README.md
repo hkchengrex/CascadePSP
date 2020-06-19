@@ -43,7 +43,9 @@ plt.show()
 The pre-trained model will be downloaded automatically.
 
 Output (4.77s):
+
 ![Output image](test/aeroplane_output.png)
 
 Output (fast, 0.45s):
-![Output image](test/aeroplane_output.png)
+
+![Output image](test/aeroplane_output_fast.png)
