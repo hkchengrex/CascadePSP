@@ -2,6 +2,8 @@ import cv2
 import time
 import matplotlib.pyplot as plt
 import segmentation_refinement as refine
+
+
 image = cv2.imread('test/aeroplane.jpg')
 mask = cv2.imread('test/aeroplane.png', cv2.IMREAD_GRAYSCALE)
 

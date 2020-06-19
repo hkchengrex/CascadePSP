@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="segmentation-refinement",
-    version="0.2",
+    version="0.3",
     author="Rex Cheng",
     author_email="hkchengrex@gmail.com",
     description="Deep learning based segmentation refinement system.",
