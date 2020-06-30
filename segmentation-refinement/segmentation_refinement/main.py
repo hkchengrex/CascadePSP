@@ -29,7 +29,7 @@ class Refiner:
             print('Downloading the model file into: %s...' % model_path)
             download_file_from_google_drive('103nLN1JQCs2yASkna0HqfioYZO7MA_J9', model_path)
 
-        model_dict = torch.load(model_path)
+        model_dict = torch.load(model_path, map_location={'cuda:0': device})
         new_dict = {}
         for k, v in model_dict.items():
             name = k[7:] # Remove module. from dataparallel

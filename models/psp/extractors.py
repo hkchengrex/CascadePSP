@@ -5,8 +5,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils import model_zoo
-from torchvision.models.densenet import densenet121, densenet161
-from torchvision.models.squeezenet import squeezenet1_1
 
 from models.sync_batchnorm import SynchronizedBatchNorm2d
 
@@ -34,15 +32,8 @@ def load_weights_sequential(target, source_state):
 
     target.load_state_dict(new_dict)
 
-'''
-    Implementation of dilated ResNet-101 with deep supervision. Downsampling is changed to 8x
-'''
 model_urls = {
-    'resnet18': 'https://download.pytorch.org/models/resnet18-5c106cde.pth',
-    'resnet34': 'https://download.pytorch.org/models/resnet34-333f7ec4.pth',
     'resnet50': 'https://download.pytorch.org/models/resnet50-19c8e357.pth',
-    'resnet101': 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth',
-    'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth',
 }
 
 
