@@ -19,8 +19,11 @@ def modify_boundary(image, regional_sample_rate=0.1, sample_rate=0.1, move_rate=
     # input: np array of size [H,W] image
     # output: same shape as input
     
-    #get boundaries
-    _, contours, _ = cv2.findContours(image, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
+    # get boundaries
+    if int(cv2.__version__[0]) >= 4:
+        contours, _ = cv2.findContours(image, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
+    else:
+        _, contours, _ = cv2.findContours(image, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
 
     #only modified contours is needed actually. 
     sampled_contours = []   
