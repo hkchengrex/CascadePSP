@@ -18,6 +18,8 @@ Here are some refinement results on high-resolution images.
 
 ## Quick Start
 
+Tested on PyTorch 1.0 -- though higher versions would likely work for inference as well.
+
 Check out [this folder](https://github.com/hkchengrex/CascadePSP/tree/master/segmentation-refinement). We have built a pip package that can refine an input image with two lines of code.
 
 Install with
