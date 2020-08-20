@@ -7,6 +7,7 @@ from torchvision import transforms, utils
 from PIL import Image
 import numpy as np
 import random
+from dataset.reseed import reseed
 import util.boundary_modification as boundary_modification
 
 seg_normalization = transforms.Normalize(
@@ -107,10 +108,10 @@ class OnlineTransformDataset(Dataset):
 
         seed = np.random.randint(2147483647)
 
-        random.seed(seed)
+        reseed(seed)
         im = self.bilinear_dual_transform_im(im)
 
-        random.seed(seed)
+        reseed(seed)
         gt = self.bilinear_dual_transform(gt)
 
         iou_max = 1.0
