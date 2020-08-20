@@ -71,6 +71,11 @@ class OnlineTransformDataset(Dataset):
         else:
             # Make up some transforms
             self.bilinear_dual_transform = transforms.Compose([
+                transforms.Resize(224, interpolation=Image.NEAREST), 
+                transforms.CenterCrop(224),
+            ])
+
+            self.bilinear_dual_transform_im = transforms.Compose([
                 transforms.Resize(224, interpolation=Image.BILINEAR), 
                 transforms.CenterCrop(224),
             ])
