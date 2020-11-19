@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>CascadePSP Project Website</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="green lighten-2" role="navigation">
+    <div class="nav-wrapper container">
+      <!-- <ul class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="https://github.com/hkchengrex/CascadePSP">Github</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="https://github.com/hkchengrex/CascadePSP">Github</a></li>
+      </ul> -->
+      <!-- <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a> -->
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h5 class="header center orange-text">CascadePSP: Toward Class-Agnostic and Very High-Resolution Segmentation via Global and Local Refinement</h5>
+      <h6 class="header center"><i>CVPR 2020</i></h6>
+      <div class="row center">
+        <h5 class="header col s12 light">Ho Kei Cheng*, Jihoon Chung*, Yu-Wing Tai, Chi-Keung Tang</h5>
+      </div>
+      <div class="row center">
+        <div class="col s12 center">
+          <a href="https://arxiv.org/abs/2005.02551" target="_blank"
+          class="btn-large waves-effect waves-light green lighten-4 black-text">Paper</a>
+          &nbsp;&nbsp;&nbsp;
+          <a href="https://github.com/hkchengrex/CascadePSP" target="_blank"
+          class="btn-large waves-effect waves-light green lighten-4 black-text">Github</a>
+          &nbsp;&nbsp;&nbsp;
+          <a href="https://github.com/hkchengrex/CascadePSP/tree/master/segmentation-refinement" target="_blank"
+          class="btn-large waves-effect waves-light green lighten-4 black-text">Quick Start</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 l10 push-l1 xl8 push-xl2">
+          <img class="materialboxed" width="100%" src="images/teaser.jpg">
+        </div>
+      </div>
+
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+      <h5 class="header center">Abstract</h1>
+        <div class="row">
+          <div class="col s12 l10 push-l1 xl8 push-xl2">
+            <p style="text-align: justify;">
+              State-of-the-art semantic segmentation methods were almost exclusively trained on images within a fixed resolution range. These segmentations are inaccurate for very high-resolution images since using bicubic upsampling of low-resolution segmentation does not adequately capture high-resolution details along object boundaries. In this paper, we propose a novel approach to address the high-resolution segmentation problem without using any high-resolution training data. The key insight is our CascadePSP network which refines and corrects local boundaries whenever possible. Although our network is trained with low-resolution segmentation data, our method is applicable to any resolution even for very high-resolution images larger than 4K. We present quantitative and qualitative studies on different datasets to show that CascadePSP can reveal pixel-accurate segmentation boundaries using our novel refinement module without any finetuning. Thus, our method can be regarded as class-agnostic. Finally, we demonstrate the application of our model to scene parsing in multi-class segmentation.
+            </p>
+          </div>
+        </div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="divider"></div>
+
+
+    <h5 class="header center">Citation</h1>
+    
+    <div class="row">
+      <div class="col s12 l10 push-l1 xl8 push-xl2">
+        <pre style="background-color: aliceblue;overflow:auto;padding: 10px;">
+@inproceedings{CascadePSP2020,
+  title={CascadePSP: Toward Class-Agnostic and Very High-Resolution Segmentation via Global and Local Refinement},
+  author={Cheng, Ho Kei and Chung, Jihoon and Tai, Yu-Wing and Tang, Chi-Keung},
+  booktitle={CVPR},
+  year={2020}
+}</pre>
+      </div>
+    </div>
+      
+
+
+
+    <br>
+  </div>
+
+  <footer class="page-footer green">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Contact</h5>
+          <p class="grey-text text-lighten-4">
+            Please Email Ho Kei Cheng (<a href = "mailto: hkchengad@ust.hk" style="color:#a6d9fc;">hkchengad@ust.hk</a>) for any questions.
+          </p>
+
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <a href="https://github.com/hkchengrex/CascadePSP/blob/master/LICENSE" style="color:white">LICENSE</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems, {});
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
+</script>
