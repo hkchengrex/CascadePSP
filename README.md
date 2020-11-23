@@ -92,7 +92,7 @@ If you find our work useful in your research, please cite the following:
 
 ```
 @inproceedings{CascadePSP2020,
-  title={CascadePSP: Toward Class-Agnostic and Very High-Resolution Segmentation via Global and Local Refinement},
+  title={{CascadePSP}: Toward Class-Agnostic and Very High-Resolution Segmentation via Global and Local Refinement},
   author={Cheng, Ho Kei and Chung, Jihoon and Tai, Yu-Wing and Tang, Chi-Keung},
   booktitle={CVPR},
   year={2020}
