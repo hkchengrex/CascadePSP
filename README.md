@@ -2,9 +2,9 @@
 
 [Ho Kei Cheng*](https://hkchengrex.github.io/), Jihoon Chung*, Yu-Wing Tai, Chi-Keung Tang
 
-[[arXiv]](https://arxiv.org/abs/2005.02551) [[PDF]](http://hkchengad.student.ust.hk/CascadePSP/CascadePSP.pdf)
+[[arXiv]](https://arxiv.org/abs/2005.02551) [[PDF]](https://arxiv.org/pdf/2005.02551)
 
-[[Supplementary Information (Comparisons with DenseCRF included!)]](http://hkchengad.student.ust.hk/CascadePSP/CascadePSP-supp-info.pdf)
+[[Supplementary Information (Comparisons with DenseCRF included!)]](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Cheng_CascadePSP_Toward_Class-Agnostic_CVPR_2020_supplemental.pdf)
 
 [[Supplementary image results]](http://hkchengad.student.ust.hk/CascadePSP/CascadePSP-supp-images.pdf)
 
