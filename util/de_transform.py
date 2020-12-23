@@ -3,7 +3,10 @@ import cv2
 import numpy as np
 
 def get_random_structure(size):
-    choice = np.random.randint(4)
+    # The provided model is trained with 
+    #   choice = np.random.randint(4)
+    # instead, which is a bug that we fixed here
+    choice = np.random.randint(1, 5)
 
     if choice == 1:
         return cv2.getStructuringElement(cv2.MORPH_RECT, (size, size))
