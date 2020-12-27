@@ -8,7 +8,7 @@ BIG contains 50 validation objects, and 100 test objects with resolution ranges 
 
 | Sample image  | Mask overlay |
 | ------------- | ------------- |
-![big_image](images/big_sample_image.jpg)  |  ![big_mask](images/big_sample_mask.jpg)
+![big_image](images/big_sample_image.jpg)  |  ![big_mask](images/big_sample_mask.jpg) |
 (Downsampled to reduce file size here)
 
 - [Google Drive](https://drive.google.com/open?id=1cLQvy1giJTSrHV4FGzXgadBgI0zNtIxN)
