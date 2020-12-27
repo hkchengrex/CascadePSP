@@ -6,9 +6,10 @@ Here we provide our annotated dataset for evaluation, as well as segmentation re
 BIG is a high-resolution segmentation dataset that has been hand-annotated by us. Images are collected from Flickr. Please do not use for commercial purposes.
 BIG contains 50 validation objects, and 100 test objects with resolution ranges from 2048\*1600 to 5000\*3600. 
 
-![big_image](images/big_sample_image.jpg)
-![big_mask](images/big_sample_mask.jpg)
-(Downsampled)
+| Sample image  | Mask overlay |
+| ------------- | ------------- |
+![big_image](images/big_sample_image.jpg)  |  ![big_mask](images/big_sample_mask.jpg)
+(Downsampled to reduce file size here)
 
 - [Google Drive](https://drive.google.com/open?id=1cLQvy1giJTSrHV4FGzXgadBgI0zNtIxN)
 - [OneDrive](https://hkustconnect-my.sharepoint.com/:u:/g/personal/jchungaa_connect_ust_hk/EUHS22NrOSZEi5-FdhJM6zkB8wn3PUaKbUMLtWMHc0BbOg?e=CVEvSE)
