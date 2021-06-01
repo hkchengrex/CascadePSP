@@ -46,9 +46,13 @@ refiner = refine.Refiner(device='cuda:0') # device can also be 'cpu'
 # Smaller L -> Less memory usage; faster in fast mode.
 output = refiner.refine(image, mask, fast=False, L=900) 
 
+# this line to save output
+cv2.imwrite('output.png', output)
+
 plt.imshow(output)
 plt.show()
 ```
+
 ## Network Overview
 
 ### Global Step & Local Step
@@ -77,10 +81,16 @@ Downloads:
 - [BIG Dataset and Relabeled PASCAL VOC 2012](docs/dataset.md)
 
 ## More Results
+
 ### Refining the masks of Human 3.6M
-| Image | Original Mask | Original FG | Refined Mask | Refined FG |
-|:-:|:-:|:-:|:-:|:-:|
-| ![Image](docs/images/H36M/im.jpg) | ![OriginalMask](docs/images/H36M/original_mask.jpg) | ![OriginalFG](docs/images/H36M/original_fg.jpg) | ![RefinedMask](docs/images/H36M/refined_mask.jpg) | ![RefinedFG](docs/images/H36M/refined_fg.jpg) |
+
+| Image | Original Mask | Refined Mask |
+|:-:|:-:|:-:|
+| ![Image](docs/images/H36M/test_im1.jpg) | ![OriginalMask](docs/images/H36M/test_mask1.jpg) | ![RefinedMask](docs/images/H36M/output1.jpg) |
+| ![Image](docs/images/H36M/test_im2.jpg) | ![OriginalMask](docs/images/H36M/test_mask2.jpg) | ![RefinedMask](docs/images/H36M/output2.jpg) |
+| ![Image](docs/images/H36M/test_im3.jpg) | ![OriginalMask](docs/images/H36M/test_mask3.jpg) | ![RefinedMask](docs/images/H36M/output3.jpg) |
+
+The first row is the failure case (see neck).
 
 ## Credit
 
@@ -90,8 +100,8 @@ SyncBN implementation: https://github.com/vacancy/Synchronized-BatchNorm-PyTorch
 
 If you find our work useful in your research, please cite the following:
 
-```
-@inproceedings{CascadePSP2020,
+```bibtex
+@inproceedings{cheng2020cascadepsp,
   title={{CascadePSP}: Toward Class-Agnostic and Very High-Resolution Segmentation via Global and Local Refinement},
   author={Cheng, Ho Kei and Chung, Jihoon and Tai, Yu-Wing and Tang, Chi-Keung},
   booktitle={CVPR},
