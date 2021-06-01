@@ -112,7 +112,7 @@ class PSPNet(nn.Module):
             r_inter_tanh_s8 = inter_s8
 
         """
-        Second iteration, s8 output
+        Second iteration, s4 output
         """
         if inter_s4 is None:
             p = torch.cat((x, seg, r_inter_tanh_s8, r_inter_tanh_s8), 1)
