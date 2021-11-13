@@ -8,6 +8,8 @@
 
 [[Supplementary image results]](http://hkchengad.student.ust.hk/CascadePSP/CascadePSP-supp-images.pdf)
 
+![gif](https://imgur.com/AD68ES8.gif)
+
 ## Introduction
 
 CascadePSP is a deep learning model for high-resolution segmentation refinement.
