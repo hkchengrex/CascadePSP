@@ -6,11 +6,11 @@ from torchvision import transforms
 
 from segmentation_refinement.models.psp.pspnet import RefinementModule
 from segmentation_refinement.eval_helper import process_high_res_im, process_im_single_pass
-from segmentation_refinement.download import download_file_from_google_drive
+from segmentation_refinement.download import download_and_or_check_model_file
 
 
 class Refiner:
-    def __init__(self, device='cpu', model_folder=None):
+    def __init__(self, device='cpu', model_folder=None, download_and_check_model=True):
         """
         Initialize the segmentation refinement model.
         device can be 'cpu' or 'cuda'
@@ -25,9 +25,8 @@ class Refiner:
             os.makedirs(model_folder, exist_ok=True)
 
         model_path = os.path.join(model_folder, 'model')
-        if not os.path.exists(model_path):
-            print('Downloading the model file into: %s...' % model_path)
-            download_file_from_google_drive('103nLN1JQCs2yASkna0HqfioYZO7MA_J9', model_path)
+        if download_and_check_model:
+            download_and_or_check_model_file(model_path)
 
         model_dict = torch.load(model_path, map_location={'cuda:0': device})
         new_dict = {}

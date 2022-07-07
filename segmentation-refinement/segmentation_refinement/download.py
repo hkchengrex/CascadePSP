@@ -1,30 +1,47 @@
+import os
 import requests
+import hashlib
 
-def download_file_from_google_drive(id, destination):
-    URL = "https://docs.google.com/uc?export=download"
 
-    session = requests.Session()
+def download_model(destination):
+    print('Downloading model file into', destination)
+    URL = 'https://github.com/hkchengrex/CascadePSP/releases/download/v1.0/model'
 
-    response = session.get(URL, params = { 'id' : id }, stream = True)
-    token = get_confirm_token(response)
+    with open(destination, 'wb') as file:
+        response = requests.get(URL)
+        file.write(response.content)
 
-    if token:
-        params = { 'id' : id, 'confirm' : token }
-        response = session.get(URL, params = params, stream = True)
+    print('Download completed.')
 
-    save_response_content(response, destination)    
 
-def get_confirm_token(response):
-    for key, value in response.cookies.items():
-        if key.startswith('download_warning'):
-            return value
+def check_model(destination):
+    correct_md5 = '7478d4a9c42ab52beb6d7e9683402fe0'
 
-    return None
+    with open(destination, 'rb') as f:
+        md5_returned = hashlib.md5(f.read()).hexdigest()
 
-def save_response_content(response, destination):
-    CHUNK_SIZE = 32768
+    return correct_md5 == md5_returned
 
-    with open(destination, "wb") as f:
-        for chunk in response.iter_content(CHUNK_SIZE):
-            if chunk: # filter out keep-alive new chunks
-                f.write(chunk)
+
+def download_and_or_check_model_file(destination):
+
+    if os.path.exists(destination):
+        # print('Model file exists.')
+        pass
+    else:
+        print('Model does not exist.')
+        download_model(destination)
+
+    md5_passed = check_model(destination)
+
+    if md5_passed:
+        return
+
+    print('MD5 of the model file does not match')
+    print('Downloading the model again...')
+    download_model(destination)
+
+    md5_passed = check_model(destination)
+    assert md5_passed, 'MD5 still does not pass'
+    
+
