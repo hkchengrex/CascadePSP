@@ -1,4 +1,4 @@
-from collections import OrderedDict
+from typing import Dict , Optional, Type, Any, Tuple
 import math
 
 import torch
@@ -6,20 +6,21 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-def conv3x3(in_planes, out_planes, stride=1, dilation=1):
+def conv3x3(in_planes: int, out_planes: int, stride: int = 1, dilation: int = 1) -> nn.Conv2d:
     return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride,
                      padding=dilation, dilation=dilation, bias=False)
 
 
 class Bottleneck(nn.Module):
-    expansion = 4
+    expansion: int = 4
 
-    def __init__(self, inplanes, planes, stride=1, downsample=None, dilation=1):
+    def __init__(self, inplanes: int, planes: int, stride: int = 1, 
+                 downsample: Optional[nn.Module] = None, dilation: int = 1) -> None:
         super(Bottleneck, self).__init__()
         self.conv1 = nn.Conv2d(inplanes, planes, kernel_size=1, bias=False)
         self.bn1 = nn.BatchNorm2d(planes)
-        self.conv2 = nn.Conv2d(planes, planes, kernel_size=3, stride=stride, dilation=dilation,
-                               padding=dilation, bias=False)
+        self.conv2 = nn.Conv2d(planes, planes, kernel_size=3, stride=stride, 
+                               dilation=dilation, padding=dilation, bias=False)
         self.bn2 = nn.BatchNorm2d(planes)
         self.conv3 = nn.Conv2d(planes, planes * 4, kernel_size=1, bias=False)
         self.bn3 = nn.BatchNorm2d(planes * 4)
@@ -27,7 +28,7 @@ class Bottleneck(nn.Module):
         self.downsample = downsample
         self.stride = stride
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         residual = x
 
         out = self.conv1(x)
@@ -51,7 +52,8 @@ class Bottleneck(nn.Module):
 
 
 class ResNet(nn.Module):
-    def __init__(self, block, layers=(3, 4, 23, 3)):
+    def __init__(self, block: Type[nn.Module], layers: Tuple[int, int, int, int] = (3, 4, 23, 3)):
+
         self.inplanes = 64
         super(ResNet, self).__init__()
         self.conv1 = nn.Conv2d(6, 64, kernel_size=7, stride=2, padding=3,
@@ -72,7 +74,8 @@ class ResNet(nn.Module):
                 m.weight.data.fill_(1)
                 m.bias.data.zero_()
 
-    def _make_layer(self, block, planes, blocks, stride=1, dilation=1):
+    def _make_layer(self, block: Type[nn.Module], planes: int, blocks: int, stride: int = 1, dilation: int = 1) -> nn.Sequential:
+
         downsample = None
         if stride != 1 or self.inplanes != planes * block.expansion:
             downsample = nn.Sequential(
@@ -88,7 +91,7 @@ class ResNet(nn.Module):
 
         return nn.Sequential(*layers)
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         x_1 = self.conv1(x)  # /2
         x = self.bn1(x_1)
         x = self.relu(x)
@@ -105,4 +108,3 @@ class ResNet(nn.Module):
 def resnet50():
     model = ResNet(Bottleneck, [3, 4, 6, 3])
     return model
-
