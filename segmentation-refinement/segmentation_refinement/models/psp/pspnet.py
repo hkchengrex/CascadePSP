@@ -1,24 +1,23 @@
 import torch
 from torch import nn
 from torch.nn import functional as F
-
-from segmentation_refinement.models.psp import extractors
+from typing import Dict , Optional, Type, Any, Tuple
+from . import extractors
 
 
 class PSPModule(nn.Module):
-    def __init__(self, features, out_features=1024, sizes=(1, 2, 3, 6)):
+    def __init__(self, features: int, out_features: int = 1024, sizes: Tuple[int, int, int, int] = (1, 2, 3, 6)):
         super().__init__()
-        self.stages = []
-        self.stages = nn.ModuleList([self._make_stage(features, size) for size in sizes])
-        self.bottleneck = nn.Conv2d(features * (len(sizes) + 1), out_features, kernel_size=1)
-        self.relu = nn.ReLU(inplace=True)
+        self.stages: nn.ModuleList = nn.ModuleList([self._make_stage(features, size) for size in sizes])
+        self.bottleneck: nn.Module = nn.Conv2d(features * (len(sizes) + 1), out_features, kernel_size=1)
+        self.relu: nn.Module = nn.ReLU(inplace=True)
 
-    def _make_stage(self, features, size):
+    def _make_stage(self, features: int, size: int) -> nn.Sequential:
         prior = nn.AdaptiveAvgPool2d(output_size=(size, size))
         conv = nn.Conv2d(features, features, kernel_size=1, bias=False)
         return nn.Sequential(prior, conv)
 
-    def forward(self, feats):
+    def forward(self, feats: torch.Tensor) -> torch.Tensor:
         h, w = feats.size(2), feats.size(3)
         set_priors = [F.interpolate(input=stage(feats), size=(h, w), mode='bilinear', align_corners=False) for stage in self.stages]
         priors = set_priors + [feats]
@@ -27,7 +26,7 @@ class PSPModule(nn.Module):
 
 
 class PSPUpsample(nn.Module):
-    def __init__(self, x_channels, in_channels, out_channels):
+    def __init__(self, x_channels:int, in_channels:int, out_channels:int):
         super().__init__()
         self.conv = nn.Sequential(
             nn.BatchNorm2d(in_channels),
@@ -49,8 +48,8 @@ class PSPUpsample(nn.Module):
 
         self.shortcut = nn.Conv2d(x_channels, out_channels, kernel_size=1)
 
-    def forward(self, x, up):
-        x = F.interpolate(input=x, scale_factor=2, mode='bilinear', align_corners=False)
+    def forward(self, x:torch.Tensor, up:torch.Tensor)->torch.Tensor:
+        x = F.interpolate(input=x, scale_factor=2.0, mode='bilinear', align_corners=False)
 
         p = self.conv(torch.cat([x, up], 1))
         sc = self.shortcut(x)
@@ -88,7 +87,7 @@ class RefinementModule(nn.Module):
         self.final_11 = nn.Conv2d(32+3, 32, kernel_size=1)
         self.final_21 = nn.Conv2d(32, 1, kernel_size=1)
 
-    def forward(self, x, seg, inter_s8=None, inter_s4=None):
+    def forward(self, x:torch.Tensor , seg:torch.Tensor, inter_s8:Optional[torch.Tensor]=None, inter_s4:Optional[torch.Tensor]=None)-> Dict[str, torch.Tensor]:
 
         images = {}
 
@@ -102,7 +101,7 @@ class RefinementModule(nn.Module):
             p = self.psp(f)
 
             inter_s8 = self.final_28(p)
-            r_inter_s8 = F.interpolate(inter_s8, scale_factor=8, mode='bilinear', align_corners=False)
+            r_inter_s8 = F.interpolate(inter_s8, scale_factor=8.0, mode='bilinear', align_corners=False)
             r_inter_tanh_s8 = torch.tanh(r_inter_s8)
 
             images['pred_28'] = torch.sigmoid(r_inter_s8)
@@ -119,13 +118,13 @@ class RefinementModule(nn.Module):
             f, f_1, f_2 = self.feats(p) 
             p = self.psp(f)
             inter_s8_2 = self.final_28(p)
-            r_inter_s8_2 = F.interpolate(inter_s8_2, scale_factor=8, mode='bilinear', align_corners=False)
+            r_inter_s8_2 = F.interpolate(inter_s8_2, scale_factor=8.0, mode='bilinear', align_corners=False)
             r_inter_tanh_s8_2 = torch.tanh(r_inter_s8_2)
 
             p = self.up_1(p, f_2)
 
             inter_s4 = self.final_56(p)
-            r_inter_s4 = F.interpolate(inter_s4, scale_factor=4, mode='bilinear', align_corners=False)
+            r_inter_s4 = F.interpolate(inter_s4, scale_factor=4.0, mode='bilinear', align_corners=False)
             r_inter_tanh_s4 = torch.tanh(r_inter_s4)
 
             images['pred_28_2'] = torch.sigmoid(r_inter_s8_2)
@@ -144,11 +143,11 @@ class RefinementModule(nn.Module):
         f, f_1, f_2 = self.feats(p) 
         p = self.psp(f)
         inter_s8_3 = self.final_28(p)
-        r_inter_s8_3 = F.interpolate(inter_s8_3, scale_factor=8, mode='bilinear', align_corners=False)
+        r_inter_s8_3 = F.interpolate(inter_s8_3, scale_factor=8.0, mode='bilinear', align_corners=False)
 
         p = self.up_1(p, f_2)
         inter_s4_2 = self.final_56(p)
-        r_inter_s4_2 = F.interpolate(inter_s4_2, scale_factor=4, mode='bilinear', align_corners=False)
+        r_inter_s4_2 = F.interpolate(inter_s4_2, scale_factor=4.0, mode='bilinear', align_corners=False)
         p = self.up_2(p, f_1)
         p = self.up_3(p, x)
 
