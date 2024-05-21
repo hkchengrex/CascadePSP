@@ -30,11 +30,14 @@ def safe_forward(model, im, seg, inter_s8=None, inter_s4=None):
             p_inter_s8 = torch.zeros(b, 1, newH, newW, device=im.device) - 1
             p_inter_s8[:,:,0:ph,0:pw] = inter_s8
             inter_s8 = p_inter_s8
+            inter_s8 = inter_s8.half()
         if inter_s4 is not None:
             p_inter_s4 = torch.zeros(b, 1, newH, newW, device=im.device) - 1
             p_inter_s4[:,:,0:ph,0:pw] = inter_s4
             inter_s4 = p_inter_s4
-
+            inter_s4 = inter_s4.half()
+    im = im.half()
+    seg = seg.half()
     images = model(im, seg, inter_s8, inter_s4)
     return_im = {}
 

@@ -35,7 +35,8 @@ class Refiner:
             new_dict[name] = v
         self.model.load_state_dict(new_dict)
         self.model.eval().to(device)
-
+        self.model = self.model.half()
+        
         self.im_transform = transforms.Compose([
             transforms.ToTensor(),
             transforms.Normalize(
